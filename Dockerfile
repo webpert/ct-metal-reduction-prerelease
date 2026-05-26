@@ -24,6 +24,8 @@ RUN pip install torch torchvision torchaudio \
 # R2-Gaussian
 WORKDIR /workspace/ct-metal-reduction-prerelease/src
 
+COPY src/requirements.txt .
+
 RUN pip install -r requirements.txt
 
 RUN pip install -e r2_gaussian/submodules/simple-knn && \
