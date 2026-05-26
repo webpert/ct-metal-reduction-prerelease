@@ -22,12 +22,12 @@ RUN pip install torch torchvision torchaudio \
     --index-url https://download.pytorch.org/whl/cu118
 
 # R2-Gaussian
-WORKDIR /workspace/ct-metal-reduction-prerelease
+WORKDIR /workspace/ct-metal-reduction-prerelease/src
 
 RUN pip install -r requirements.txt
 
-RUN pip install -e submodules/simple-knn && \
-    pip install -e submodules/xray-gaussian-rasterization-voxelization
+RUN pip install -e r2_gaussian/submodules/simple-knn && \
+    pip install -e r2_gaussian/submodules/xray-gaussian-rasterization-voxelization
 
 # TIGRE
 WORKDIR /workspace
