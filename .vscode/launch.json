@@ -1,0 +1,38 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Generate synthetic dataset",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/generate_data_mar.py",
+            "args": [
+                "--input", "D:/data/eg2026_data_release/sample_volume_for_synthetic_generation/pancreas_metal.mat",
+            ],            
+            "console": "integratedTerminal",
+        },    
+        {
+            "name": "Initialize point cloud",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/initialize_pcd.py",
+            "args": [
+                "--data", "D:/data/R2_gaussian_dataset/CNU_dataset/walnut_bhc_fe",
+            ],            
+            "console": "integratedTerminal",
+        },    
+        {
+            "name": "Train start!",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "src/train.py",
+            "args": [
+                "--config", "src/config/default.yaml",
+            ],            
+            "console": "integratedTerminal",
+            "env": {
+                    "CUDA_LAUNCH_BLOCKING": "1"
+                }            
+        },     
+    ]
+}

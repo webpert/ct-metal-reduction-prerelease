@@ -1,0 +1,7 @@
+*.egg-info
+.dump
+*.so
+build/
+dist/
+__pycache__/
+third_party/glm/

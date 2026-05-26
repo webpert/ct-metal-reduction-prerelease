@@ -1,0 +1,63 @@
+# model parameters
+# source_path: "D:/data/neurips2025/dataset/lidc_idri_002_cylinder2"
+source_path: "D:/data/R2_gaussian_dataset/CNU_dataset/walnut_bhc_fe"
+# source_path: "D:/data/R2_gaussian_dataset/CNU_dataset/walnut_fe"
+# source_path: "D:/data/R2_gaussian_dataset/CNU_dataset/cylinder3_bhc_al_90kev_0.5mm"
+# source_path: "D:/data/R2_gaussian_dataset/custom/cylinder3_10-90kev_CsI_0_5_eff"
+# source_path: "D:/data/R2_gaussian_dataset/custom/lidc_idri_002_cylinder2"
+# source_path: "D:/data/R2_gaussian_dataset/CNU_dataset/cupping_bhc_al_90kev_0.5mm"
+
+view_percentile: 98.0
+model_path: ""
+ply_path: ""
+data_device: "cuda"
+scale_min: 0.0005
+scale_max: 0.5
+eval: true
+
+# optimization parameters
+iterations: 20000
+position_lr_init: 0.0002
+position_lr_final: 0.00002
+position_lr_max_steps: 20000
+density_lr_init: 0.01  # 0.01
+density_lr_final: 0.001  # 0.001
+density_lr_max_steps: 20000
+density_res_lr_init: 0.1  # 0.1
+density_res_lr_final: 0.01  # 0.01
+density_res_lr_max_steps: 20000
+scaling_lr_init: 0.005  # 0.005
+scaling_lr_final: 0.0005  # 0.0005
+scaling_lr_max_steps: 20000
+rotation_lr_init: 0.001
+rotation_lr_final: 0.0001
+rotation_lr_max_steps: 20000
+
+bhc_eta_ratio_lr_init: 0.001
+bhc_eta_ratio_lr_final: 0.0001
+bhc_eta_ratio_lr_max_steps: 20000
+bhc_eta_thres_lr_init: 0.001
+bhc_eta_thres_lr_final: 0.0001
+bhc_eta_thres_lr_max_steps: 20000
+
+bhc_gamma_lr_init: 0.0
+bhc_gamma_lr_final: 0.0
+bhc_gamma_lr_max_steps: 20000
+bhc_gamma_init_value: 0.8  # 0 < gamma < 1, 20-120kev(0.7142857142), 20-60kev(0.5), 5-100kev(0.9047619), 5-90kev(0.894736842), 10-90kev(0.8)
+
+bhc_density_init_scale: 0.5  # 0.25
+
+lambda_dssim: 0.25   # default: 0.25
+density_min_threshold: 0.00001    # default: 0.00001
+densification_interval: 100
+densify_from_iter: 500
+densify_until_iter: 15000
+densify_grad_threshold: 5.0e-5    # default: 5.0e-5
+densify_scale_threshold: 0.1    # default: 0.1
+max_screen_size: null
+max_scale: null
+max_num_gaussians: 500000
+
+# pipeline parameters
+compute_cov3D_python: false
+debug: false
