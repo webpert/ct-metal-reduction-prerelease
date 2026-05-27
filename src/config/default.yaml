@@ -1,11 +1,5 @@
 # model parameters
-# source_path: "D:/data/neurips2025/dataset/lidc_idri_002_cylinder2"
-source_path: "D:/data/R2_gaussian_dataset/CNU_dataset/walnut_bhc_fe"
-# source_path: "D:/data/R2_gaussian_dataset/CNU_dataset/walnut_fe"
-# source_path: "D:/data/R2_gaussian_dataset/CNU_dataset/cylinder3_bhc_al_90kev_0.5mm"
-# source_path: "D:/data/R2_gaussian_dataset/custom/cylinder3_10-90kev_CsI_0_5_eff"
-# source_path: "D:/data/R2_gaussian_dataset/custom/lidc_idri_002_cylinder2"
-# source_path: "D:/data/R2_gaussian_dataset/CNU_dataset/cupping_bhc_al_90kev_0.5mm"
+source_path: "/workspace/data/walnut_bhc_fe"
 
 view_percentile: 98.0
 model_path: ""

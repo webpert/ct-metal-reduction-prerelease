@@ -33,8 +33,13 @@ RUN pip install -r requirements.txt
 
 RUN python -c "import torch; print(torch.__version__, torch.version.cuda)"
 
-RUN pip install -e r2_gaussian/submodules/simple-knn --no-build-isolation
-RUN pip install -e r2_gaussian/submodules/xray-gaussian-rasterization-voxelization --no-build-isolation
+RUN python -m pip install \
+    r2_gaussian/submodules/simple-knn \
+    --no-build-isolation
+
+RUN python -m pip install \
+    r2_gaussian/submodules/xray-gaussian-rasterization-voxelization \
+    --no-build-isolation
 
 # TIGRE
 WORKDIR /workspace
