@@ -30,8 +30,10 @@ RUN git clone https://github.com/g-truc/glm.git r2_gaussian/submodules/xray-gaus
 
 RUN pip install -r requirements.txt
 
-RUN pip install -e r2_gaussian/submodules/simple-knn && \
-    pip install -e r2_gaussian/submodules/xray-gaussian-rasterization-voxelization
+RUN python -c "import torch; print(torch.__version__, torch.version.cuda)"
+
+RUN pip install -e r2_gaussian/submodules/simple-knn --no-build-isolation
+RUN pip install -e r2_gaussian/submodules/xray-gaussian-rasterization-voxelization --no-build-isolation
 
 # TIGRE
 WORKDIR /workspace
