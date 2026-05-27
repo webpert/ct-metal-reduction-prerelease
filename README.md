@@ -10,7 +10,7 @@ Cone-beam computed tomography (CBCT) enables volumetric reconstruction from X-ra
 
 This repository is organized around the run configurations defined in `.vscode/launch.json`.
 
-- `generate_synthetic_mar.py`: generate a MAR synthetic dataset
+- `generate_synthetic_mar.py`: generate a synthetic dataset with predefined configuration files (cone_beam.yml, xxx.mat)
 - `initialize_pcd.py`: create the initial Gaussian point cloud
 - `train.py`: run reconstuction with metal artifact reduction
 
@@ -45,12 +45,26 @@ docker run -it --gpus all \
 ```
 
 ## Data Preparation
-Download one of the dataset from [link](https://drive.google.com/drive/folders/1l4noH0qe3abyq17l8Ex3BiDFcygj9hLs?usp=drive_link).<br>
-(Caution: sample_volume_for_synthetic_generation is an input for synthetic dataset generator, not for reconstruction)<br>
-Once the downloading is completed, extract the zip file to a specific directory and modify the data path in "./config/default.yaml" accordingly.
+Download one of the dataset from [link](https://drive.google.com/drive/folders/1l4noH0qe3abyq17l8Ex3BiDFcygj9hLs?usp=drive_link) and extract the zip file to a specific directory.<br>
+Note that ``sample_volume_for_synthetic_generation.zip``  is an input for synthetic data generationn and the others are for reconstruction.
 
-## Optimization
-Run the reconstruction program using the following command.
+## Synthetic Data Generation
+Download ``sample_volume_for_synthetic_generation.zip`` from [link](https://drive.google.com/drive/folders/1l4noH0qe3abyq17l8Ex3BiDFcygj9hLs?usp=drive_link).<br>
+Extract the zip file to a specific directory and run the following command.<br>
+($RAW_DATA_PATH can be ``sample_volume_for_synthetic_generation/pancreas_metal.mat``)
+```
+python generate_synthetic_mar.py --input $RAW_DATA_PATH
+```
+
+## Intialization of Gaussians
+Run the following command ($SCENE_PATH can be ``real_walnut`` or something).<br>
+This process can be ignored when $SCENE_PATH already has initial Gaussians such as ``init_$SCENE_PATH.npy``
+```
+python initialize_pcd.py --data $SCENE_PATH
+```
+
+## Reconstruction
+Modify the data path in "./config/default.yaml" and run the reconstruction program using the following command.
 ```
 python train.py --config $CONFIG_FILE_PATH
 ```
