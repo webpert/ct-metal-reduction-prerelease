@@ -1,6 +1,0 @@
-[submodule "src/r2_gaussian/submodules/simple-knn"]
-	path = src/r2_gaussian/submodules/simple-knn
-	url = https://gitlab.inria.fr/bkerbl/simple-knn.git
-[submodule "src/r2_gaussian/submodules/xray-gaussian-rasterization-voxelization/third_party/glm"]
-	path = src/r2_gaussian/submodules/xray-gaussian-rasterization-voxelization/third_party/glm
-	url = https://github.com/g-truc/glm.git

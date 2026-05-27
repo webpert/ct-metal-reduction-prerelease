@@ -25,6 +25,9 @@ RUN pip install torch torchvision torchaudio \
 # R2-Gaussian
 WORKDIR /workspace/src
 
+RUN git clone https://gitlab.inria.fr/bkerbl/simple-knn.git r2_gaussian/submodules/simple-knn
+RUN git clone https://github.com/g-truc/glm.git r2_gaussian/submodules/xray-gaussian-rasterization-voxelization/third_party/glm
+
 RUN pip install -r requirements.txt
 
 RUN pip install -e r2_gaussian/submodules/simple-knn && \
