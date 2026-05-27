@@ -6,6 +6,7 @@ ENV CUDA_HOME=/usr/local/cuda
 ENV PATH=${CUDA_HOME}/bin:${PATH}
 
 WORKDIR /workspace
+COPY src ./src
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git wget unzip build-essential cmake ninja-build \
@@ -22,9 +23,7 @@ RUN pip install torch torchvision torchaudio \
     --index-url https://download.pytorch.org/whl/cu118
 
 # R2-Gaussian
-WORKDIR /workspace/ct-metal-reduction-prerelease/src
-
-COPY src/requirements.txt .
+WORKDIR /workspace/src
 
 RUN pip install -r requirements.txt
 
@@ -46,6 +45,6 @@ WORKDIR /workspace/XrayPhysics
 
 RUN pip install -v .
 
-WORKDIR /workspace/ct-metal-reduction-prerelease
+WORKDIR /workspace/src
 
 CMD ["/bin/bash"]
