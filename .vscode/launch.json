@@ -5,9 +5,9 @@
             "name": "Generate synthetic dataset",
             "type": "debugpy",
             "request": "launch",
-            "program": "src/generate_data_mar.py",
+            "program": "src/generate_synthetic_mar.py",
             "args": [
-                "--input", "D:/data/eg2026_data_release/sample_volume_for_synthetic_generation/pancreas_metal.mat",
+                "--input", "/workspace/data/EG2026/sample_volume_for_synthetic_generation/pancreas_metal.mat",
             ],            
             "console": "integratedTerminal",
         },    
@@ -17,7 +17,7 @@
             "request": "launch",
             "program": "src/initialize_pcd.py",
             "args": [
-                "--data", "D:/data/R2_gaussian_dataset/CNU_dataset/walnut_bhc_fe",
+                "--data", "/workspace/data/EG2026/real_walnut",
             ],            
             "console": "integratedTerminal",
         },    
@@ -27,7 +27,7 @@
             "request": "launch",
             "program": "src/train.py",
             "args": [
-                "--config", "src/config/default.yaml",
+                "--config", "/workspace/src/config/default.yaml",
             ],            
             "console": "integratedTerminal",
             "env": {

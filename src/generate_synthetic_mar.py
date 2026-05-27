@@ -18,9 +18,9 @@ from xrayphysics import *
 
 sys.path.append("./")
 
-# ref_mode = 0: use the center energy as reference (default)
-# ref_mode = 1: use the effective energy as reference
-ref_mode = 0
+# ref_mode = 0: use the center energy as reference
+# ref_mode = 1: use the effective energy as reference (default)
+ref_mode = 1
 
 # program input
 # 1. kev: a scalar value of the x-ray energy used as a reference for volume slices
