@@ -27,8 +27,8 @@ CUDA: 13.1 (Driver: 590.48.01)
 ## Setup
 Ensure that your system supports CUDA and Docker. Then clone this repository and move into the project directory.
 ```
-git clone https://github.com/webpert/ct-metal-reduction-prerelease.git
-cd ct-metal-reduction-prerelease
+git clone https://github.com/KAIST-VCLAB/ct-metal-reduction.git
+cd ct-metal-reduction
 ```
 
 Build the Docker image using Dockerfile. This process may take several minutes.
