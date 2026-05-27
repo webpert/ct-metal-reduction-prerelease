@@ -49,12 +49,13 @@ Download one of the dataset from [link](https://drive.google.com/drive/folders/1
 Note that ``sample_volume_for_synthetic_generation.zip``  is an input for synthetic data generationn and the others are for reconstruction.
 
 ## Synthetic Data Generation
-Download ``sample_volume_for_synthetic_generation.zip`` from [link](https://drive.google.com/drive/folders/1l4noH0qe3abyq17l8Ex3BiDFcygj9hLs?usp=drive_link).<br>
+Download ``sample_volume_for_synthetic_generation.zip`` from [link](https://drive.google.com/drive/folders/1l4noH0qe3abyq17l8Ex3BiDFcygj9hLs?usp=drive_link) or generate own raw data referencing the sample data.<br>
 Extract the zip file to a specific directory and run the following command.<br>
 ($RAW_DATA_PATH can be ``sample_volume_for_synthetic_generation/pancreas_metal.mat``)
 ```
 python generate_synthetic_mar.py --input $RAW_DATA_PATH
 ```
+If a customized raw data is used, configure some hyperparameters in the related hyperparameters in the code if necessary.
 
 ## Intialization of Gaussians
 Run the following command ($SCENE_PATH can be ``real_walnut`` or something).<br>
