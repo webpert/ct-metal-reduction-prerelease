@@ -1,4 +1,12 @@
-# EG2026 Code Release
+# Splat-based Metal Artifact Reduction in Cone-Beam CT via Polychromatic Modeling
+Cone-beam computed tomography (CBCT) enables volumetric reconstruction from X-ray projections, but suffers from severe artifacts--especially beam hardening--when imaging materials with high attenuation such as metals. These artifacts arise from the polychromatic nature of X-rays and are not properly addressed by conventional monochromatic reconstruction algorithms. While recent neural representation-based methods offer improved reconstruction quality, they are computationally expensive and often impractical for deployment. We propose a novel physics-inspired, self-calibrating metal artifact reduction method that efficiently reconstructs 3D CBCT volumes while correcting beam hardening artifacts. Our method integrates a polychromatic X-ray projection model, material-dependent attenuation profiles, and system response modeling into a Gaussian Splatting framework. Unlike prior work, we eliminate the need for manual metal masks or strong prior assumptions, and we optimize both reconstruction parameters and X-ray spectral characteristics jointly during training. We further introduce a high-fidelity synthetic CBCT dataset generation pipeline validated on Monte-Carlo x-ray simulation toolbox and release new datasets with severe metal-induced artifacts to support the community. This is the first splat-based method for reducing beam hardening in CBCT. Extensive experiments on both synthetic and real-world datasets demonstrate that our method outperforms state-of-the-art approaches in artifact suppression and reconstruction accuracy.
+
+### [Project page](https://vclab.kaist.ac.kr/eg2026/index.html) | [Paper](https://vclab.kaist.ac.kr/eg2026/paper1170_CRC.pdf) | [Supplemental](https://vclab.kaist.ac.kr/eg2026/paper1170_CRC_MM1.pdf)
+[Kiseok Choi](https://sites.google.com/view/kiseokchoi), 
+[Inchul Kim](https://inchul-kim.github.io/), 
+[Jaemin Cho](http://vclab.kaist.ac.kr/jmcho/index.html), 
+[Hyeongjun Cho](http://vclab.kaist.ac.kr/hjcho/index.html), 
+[Min H. Kim](http://vclab.kaist.ac.kr/minhkim/index.html)
 
 This repository is organized around the run configurations defined in `.vscode/launch.json`.
 
@@ -13,9 +21,9 @@ Unless noted otherwise, all commands below are intended to be run from the `src`
 ### Requirements
 
 - NVIDIA GPU
-- CUDA 11.6-compatible driver
-- Conda or Miniconda
-- Python 3.9
+- CUDA 11.8-compatible driver
+- Docker
+- Ubuntu 22.04 or later
 
 ### Create the Environment
 
