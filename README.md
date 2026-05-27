@@ -64,7 +64,7 @@ python initialize_pcd.py --data $SCENE_PATH
 ```
 
 ## Reconstruction
-Modify the data path in "./config/default.yaml" and run the reconstruction program using the following command.
+Modify the source_path in ``./config/default.yaml`` and run the reconstruction program using the following command.
 ```
 python train.py --config $CONFIG_FILE_PATH
 ```
