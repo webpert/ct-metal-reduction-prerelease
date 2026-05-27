@@ -4,6 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Seoul
 ENV CUDA_HOME=/usr/local/cuda
 ENV PATH=${CUDA_HOME}/bin:${PATH}
+ENV TORCH_CUDA_ARCH_LIST="7.5;8.0;8.6;8.9"
 
 WORKDIR /workspace
 COPY src ./src
