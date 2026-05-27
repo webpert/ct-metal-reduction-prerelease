@@ -12,7 +12,7 @@ This repository is organized around the run configurations defined in `.vscode/l
 
 - `generate_synthetic_mar.py`: generate a MAR synthetic dataset
 - `initialize_pcd.py`: create the initial Gaussian point cloud
-- `train.py`: run training
+- `train.py`: run reconstuction with metal artifact reduction
 
 ## Tested Environment
 ```
@@ -44,5 +44,33 @@ docker run -it --gpus all \
   r2gs_bhc:cuda118
 ```
 
+## Data Preparation
+Download one of the dataset from [link](https://drive.google.com/drive/folders/1l4noH0qe3abyq17l8Ex3BiDFcygj9hLs?usp=drive_link).
+(Caution: sample_volume_for_synthetic_generation is an input for synthetic dataset generator, not for reconstruction)
+Once the downloading is completed, extract the zip file to a specific directory and modify the data path in "./config/default.yaml" accordingly.
 
+## Optimization
+Run the reconstruction program using the following command.
+```
+python train.py --config $CONFIG_FILE_PATH
+```
+Once the optimization process is completed, with 20000 iterations (it took about 18 minutes on the tested hardware), 
+the resulting volume will be saved in the directory "./output/$CONFIG_FILE_NAME_MM-DD-hh-mm-ss/point_cloud/iteration_20000" under the filename "vol_center.npy." 
+
+## Citation
+```	
+@Article{Choi:EG:2026,
+  author  = {Choi, Kiseok and Kim, Inchul and Cho, Jaemin and Cho, Hyeongjun and Kim, Min H.},
+  title   = {Splat-based Metal Artifact Reduction in Cone-Beam CT
+             via Polychromatic Modeling},
+  journal = {Computer Graphics Forum (Proc. EUROGRAPHICS 2026)},
+  year    = {2026},
+  volume  = {45},
+  number  = {2},
+  pages   = {}
+}
+```
+
+## Acknowledgements
+We employed the [Fast Phasor-field NLOS](https://biostat.wisc.edu/~compoptics/phasornlos20/fastnlos.html) code as the primary imaging algorithm and integrated certain code structures from [PyTorch3D](https://pytorch3d.org/) for tasks related to ray sampling and ray marching.
 
