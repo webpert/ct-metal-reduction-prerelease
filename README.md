@@ -8,11 +8,11 @@ Cone-beam computed tomography (CBCT) enables volumetric reconstruction from X-ra
 [Hyeongjun Cho](http://vclab.kaist.ac.kr/hjcho/index.html), 
 [Min H. Kim](http://vclab.kaist.ac.kr/minhkim/index.html)
 
-This repository is organized around the run configurations defined in `.vscode/launch.json`.
+This repository is organized around the execution pipeline defined in `.vscode/launch.json`.
 
-- `generate_synthetic_mar.py`: generate a synthetic dataset with predefined configuration files (cone_beam.yml, xxx.mat)
-- `initialize_pcd.py`: create the initial Gaussian point cloud
-- `train.py`: run reconstuction with metal artifact reduction
+- `generate_synthetic_mar.py`: Generates synthetic CBCT datasets using predefined configuration files (cone_beam.yml, xxx.mat)
+- `initialize_pcd.py`: Initializes the Gaussian point cloud
+- `train.py`: Runs CBCT reconstruction with metal artifact reduction
 
 ## Tested Environment
 ```
@@ -25,17 +25,17 @@ CUDA: 13.1 (Driver: 590.48.01)
 ```
 
 ## Setup
-Make sure that your hardware supports CUDA and Docker and clone the following repository and enter into the created folder.
+Ensure that your system supports CUDA and Docker. Then clone this repository and move into the project directory.
 ```
 git clone https://github.com/webpert/ct-metal-reduction-prerelease.git
 cd ct-metal-reduction-prerelease
 ```
 
-The following command builds a docker image with ./Dockerfile. This may take some time.
+Build the Docker image using Dockerfile. This process may take several minutes.
 ```
 docker build -t r2gs_bhc:cuda118 .
 ```
-Start the docker container. You may modify some options for your own environment.
+Launch the Docker container. Modify the options below according to your environment.
 ```
 docker run -it --gpus all \
   --name r2gs_bhc \
@@ -45,32 +45,35 @@ docker run -it --gpus all \
 ```
 
 ## Data Preparation
-Download one of the dataset from [link](https://drive.google.com/drive/folders/1l4noH0qe3abyq17l8Ex3BiDFcygj9hLs?usp=drive_link) and extract the zip file to a specific directory.<br>
-Note that ``sample_volume_for_synthetic_generation.zip``  is an input for synthetic data generationn and the others are for reconstruction.
+Download one of the datasets from [link](https://drive.google.com/drive/folders/1l4noH0qe3abyq17l8Ex3BiDFcygj9hLs?usp=drive_link) and extract it to your preferred directory.<br>
+``sample_volume_for_synthetic_generation.zip``  is intended for synthetic data generation, while all other datasets are used for reconstruction experiments.
 
 ## Synthetic Data Generation
-Download ``sample_volume_for_synthetic_generation.zip`` from [link](https://drive.google.com/drive/folders/1l4noH0qe3abyq17l8Ex3BiDFcygj9hLs?usp=drive_link) or generate own raw data referencing the sample data.<br>
-Extract the zip file to a specific directory and run the following command.<br>
+Download ``sample_volume_for_synthetic_generation.zip`` from [link](https://drive.google.com/drive/folders/1l4noH0qe3abyq17l8Ex3BiDFcygj9hLs?usp=drive_link) or prepare your own raw data following the sample format.<br>
+Extract the archive and run:<br>
 ($RAW_DATA_PATH can be ``sample_volume_for_synthetic_generation/pancreas_metal.mat``)
 ```
 python generate_synthetic_mar.py --input $RAW_DATA_PATH
 ```
-If a customized raw data is used, configure some hyperparameters in the related hyperparameters in the code if necessary.
+If custom raw data is used, adjust the relevant hyperparameters in the source code when necessary.
 
-## Intialization of Gaussians
-Run the following command ($SCENE_PATH can be ``real_walnut`` or something).<br>
-This process can be ignored when $SCENE_PATH already has initial Gaussians such as ``init_$SCENE_PATH.npy``
+## Gaussian Initialization
+Run the following command to initialize the Gaussian representation.<br>
+($SCENE_PATH can be ``real_walnut`` or something).
 ```
 python initialize_pcd.py --data $SCENE_PATH
 ```
+This step can be skipped if the dataset directory already contains initialized Gaussians (e.g., ``init_$SCENE_PATH.npy``).
 
 ## Reconstruction
-Modify the source_path in ``./config/default.yaml`` and run the reconstruction program using the following command.
+Modify ``source_path`` in ``./config/default.yaml`` and start reconstruction using:
 ```
 python train.py --config $CONFIG_FILE_PATH
 ```
-Once the optimization process is completed, with 20000 iterations (it took about 18 minutes on the tested hardware), <br>
-the resulting volume will be saved in the directory "./output/$CONFIG_FILE_NAME_MM-DD-hh-mm-ss/point_cloud/iteration_20000" under the filename "vol_center.npy." 
+After optimization completes (20,000 iterations; approximately 18 minutes on the tested hardware), the reconstructed volume will be saved to:
+```
+./output/$CONFIG_FILE_NAME_MM-DD-hh-mm-ss/point_cloud/iteration_20000/vol_center.npy
+```
 
 ## Citation
 ```	
@@ -87,5 +90,4 @@ the resulting volume will be saved in the directory "./output/$CONFIG_FILE_NAME_
 ```
 
 ## Acknowledgements
-We employed the [R2-Gaussian](https://github.com/ruyi-zha/r2_gaussian) code as the primary reconsruction algorithm and added our models into it.
-
+This project builds upon the implementation of [R2-Gaussian](https://github.com/ruyi-zha/r2_gaussian) as the primary reconstruction framework, with our proposed physical modeling components integrated into the original pipeline.
