@@ -45,8 +45,8 @@ docker run -it --gpus all \
 ```
 
 ## Data Preparation
-Download one of the dataset from [link](https://drive.google.com/drive/folders/1l4noH0qe3abyq17l8Ex3BiDFcygj9hLs?usp=drive_link).
-(Caution: sample_volume_for_synthetic_generation is an input for synthetic dataset generator, not for reconstruction)
+Download one of the dataset from [link](https://drive.google.com/drive/folders/1l4noH0qe3abyq17l8Ex3BiDFcygj9hLs?usp=drive_link).<br>
+(Caution: sample_volume_for_synthetic_generation is an input for synthetic dataset generator, not for reconstruction)<br>
 Once the downloading is completed, extract the zip file to a specific directory and modify the data path in "./config/default.yaml" accordingly.
 
 ## Optimization
@@ -54,7 +54,7 @@ Run the reconstruction program using the following command.
 ```
 python train.py --config $CONFIG_FILE_PATH
 ```
-Once the optimization process is completed, with 20000 iterations (it took about 18 minutes on the tested hardware), 
+Once the optimization process is completed, with 20000 iterations (it took about 18 minutes on the tested hardware), <br>
 the resulting volume will be saved in the directory "./output/$CONFIG_FILE_NAME_MM-DD-hh-mm-ss/point_cloud/iteration_20000" under the filename "vol_center.npy." 
 
 ## Citation
@@ -72,5 +72,5 @@ the resulting volume will be saved in the directory "./output/$CONFIG_FILE_NAME_
 ```
 
 ## Acknowledgements
-We employed the [Fast Phasor-field NLOS](https://biostat.wisc.edu/~compoptics/phasornlos20/fastnlos.html) code as the primary imaging algorithm and integrated certain code structures from [PyTorch3D](https://pytorch3d.org/) for tasks related to ray sampling and ray marching.
+We employed the [R2-Gaussian](https://github.com/ruyi-zha/r2_gaussian) code as the primary reconsruction algorithm and added our models into it.
 
