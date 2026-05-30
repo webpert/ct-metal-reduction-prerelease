@@ -89,5 +89,10 @@ After optimization completes (20,000 iterations; approximately 18 minutes on the
 }
 ```
 
-## Acknowledgements
-This project builds upon the implementation of [R2-Gaussian](https://github.com/ruyi-zha/r2_gaussian) as the primary reconstruction framework, with our proposed physical modeling components integrated into the original pipeline.
+## License
+
+This project is released under the MIT License.
+
+This code is built upon and contains modifications of the [R2-Gaussian](https://github.com/ruyi-zha/r2_gaussian) project, which is also distributed under the MIT License. We gratefully acknowledge the authors for making their code publicly available.
+
+See the LICENSE file for details.
